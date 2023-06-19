@@ -1,0 +1,9 @@
+{% if task_list %}
+    <ul>
+        <table>
+        {% for task in task_list %}
+            <a href="{% url 'polls:detail_task' task.id %}">
+                <th>{{task.description}}</th>
+                <th>{{task.duration}}</th>
+        </table>
+    </ul>
