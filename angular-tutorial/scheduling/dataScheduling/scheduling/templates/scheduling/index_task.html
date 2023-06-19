@@ -14,7 +14,16 @@
                 <th align="left"><a href="{% url 'scheduling:detail task' task.id %}">
                     <p align="left" >{{task.description}}</p></a></th>
                 <th align="left">{{task.duration}}</th>
-                <th align="left">{{task.prerequisite}}</th>
+                {%if task.prerequisite %}
+
+                <th>
+                    <ul>
+                    {% for task_prerequisite in task.prerequisite.all %}
+                        <il>{{task_prerequisite.description}}</il>
+                    {% endfor %}
+                    </ul>
+                </th>
+                {% endif %}
             </tr>
         {% endfor %}
         </table>
