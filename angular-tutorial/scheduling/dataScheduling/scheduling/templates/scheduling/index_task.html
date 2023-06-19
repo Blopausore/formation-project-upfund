@@ -1,9 +1,23 @@
+<h1>scheduling</h1>
+
+<h3>Task already registered</h3>
 {% if task_list %}
     <ul>
         <table>
+        <tr>
+            <th align="left">Description</th>
+            <th align="left">Duration</th>
+            <th align="left">Prerequisite</th>
+        </tr>            
         {% for task in task_list %}
-            <a href="{% url 'polls:detail_task' task.id %}">
-                <th>{{task.description}}</th>
-                <th>{{task.duration}}</th>
+            <tr>
+                <th align="left"><a href="{% url 'scheduling:detail task' task.id %}">
+                    <p align="left" >{{task.description}}</p></a></th>
+                <th align="left">{{task.duration}}</th>
+                <th align="left">{{task.prerequisite}}</th>
+            </tr>
+        {% endfor %}
         </table>
     </ul>
+{% endif %}
+<h3>Add some tasks if you want</h3> 

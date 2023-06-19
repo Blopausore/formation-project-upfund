@@ -7,5 +7,6 @@ class Task(models.Model):
     duration = models.DateTimeField("task duration", default=timezone.now())
     prerequisite = models.ManyToManyField('self', null=True, blank=True)
 
-
+    def __str__(self) -> str:
+        return self.description
 

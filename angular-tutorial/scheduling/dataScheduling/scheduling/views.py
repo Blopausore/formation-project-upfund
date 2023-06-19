@@ -11,7 +11,7 @@ class TaskView(generic.ListView):
     context_object_name="task_list"
 
     def get_queryset(self) -> QuerySet[Any]:
-        return Task.objects.exclude(alias__isnull=True)
+        return Task.objects.all()
     
 class TaskDetail(generic.DetailView):
     model = Task
