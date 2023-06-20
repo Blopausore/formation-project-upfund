@@ -6,7 +6,7 @@
 </ul>
 {% if task.prerequisite %}
 <h4>Task prerequisite</h4>
-{% for prerequisite_task in task.prerequisite.all %}    
+{% for prerequisite_task in task.getPrerequisite() %}    
     <ul>
         <li><a href="{% url 'scheduling:detail task' prerequisite_task.id %}">{{prerequisite_task.description}}</a></li>
     </ul>
