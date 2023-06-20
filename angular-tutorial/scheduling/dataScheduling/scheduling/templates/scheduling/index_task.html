@@ -1,10 +1,12 @@
 <h1>scheduling</h1>
 
-<h3>Task already registered</h3>
 {% if task_list %}
+    <h3>Task already registered</h3>
+
     <ul>
         <table>
         <tr>
+            <th align="left">Name</th>
             <th align="left">Description</th>
             <th align="left">Duration</th>
             <th align="left">Prerequisite</th>
@@ -12,14 +14,15 @@
         {% for task in task_list %}
             <tr>
                 <th align="left"><a href="{% url 'scheduling:detail task' task.id %}">
-                    <p align="left" >{{task.description}}</p></a></th>
+                    <p align="left" >{{task.name}}</p></a></th>
+                <th align="left">{{task.description}}</th>
                 <th align="left">{{task.duration}}</th>
-                {%if task.prerequisite %}
 
+                {%if task.prerequisite.exists %}
                 <th>
                     <ul>
-                    {% for task_prerequisite in task.prerequisite.all %}
-                        <il>{{task_prerequisite.description}}</il>
+                    {% for task_prerequisite in task.get_prerequisite %}
+                        <il>{{task_prerequisite.name}}</il>
                     {% endfor %}
                     </ul>
                 </th>
@@ -28,5 +31,8 @@
         {% endfor %}
         </table>
     </ul>
+<h3><a href="{% url 'scheduling:manage task' %}">Task manager</a></h3>
+
+{% else %}
+    <h3>Add some tasks</h3> 
 {% endif %}
-<h3>Add some tasks if you want</h3> 

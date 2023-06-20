@@ -1,0 +1,23 @@
+{% if task_list %}
+
+<ul>
+    <table>
+    <tr>
+        <th align="left">Name</th>
+        <th align="left">Description</th>
+        <th align="left">Starting</th>
+        <th align="left">Duration</th>
+    </tr>            
+    {% for task in task_list %}
+        <tr>
+            <th align="left"><a href="{% url 'scheduling:detail task' task.id %}">
+                <p align="left" >{{task.name}}</p></a></th>
+            <th align="left">{{task.description}}</th>
+            <th align="left">{{task.starting}}</th>
+            <th align="left">{{task.duration}}</th>
+        </tr>
+    {% endfor %}
+    </table>
+</ul>
+
+{% endif %}
