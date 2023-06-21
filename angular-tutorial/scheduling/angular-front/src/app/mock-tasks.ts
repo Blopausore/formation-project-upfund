@@ -1,12 +1,11 @@
-import { Task } from "./task";
-import { Duration, ZERO_DURATION } from "src/duration";
+import { Task } from "./task"
 
+const task_balaie: Task = new Task( 0, "Balayer", "Sami passe le balaie", 10, 0, [])
+const task_vitre : Task = new Task(1, "Nettoyer", "Sami nettoie les vitres", 20, 0, [task_balaie]);
+const task_verre : Task = new Task(2, "Servir", "Sami me sert un verre", 2, 0, [task_vitre, task_balaie]);
 
-export const TASKS: Task[] = [
-    {id : 0, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
-    {id : 1, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
-    {id : 2, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
-    {id : 3, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
-    {id : 4, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
-    {id : 5, name: "", description: "", duration: ZERO_DURATION, prerequisite: [] },
+export const TASKS : Task[] = [
+    task_balaie,
+    task_vitre,
+    task_verre
 ]

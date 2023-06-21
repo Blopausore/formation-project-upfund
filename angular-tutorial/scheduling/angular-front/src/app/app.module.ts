@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 import { TasksComponent } from './tasks/tasks.component';
@@ -12,22 +11,40 @@ import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+import { MatSelectModule } from '@angular/material/select';
+import { FormControl, FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { NgFor } from '@angular/common';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input'
+import { MatIconModule } from '@angular/material/icon'
+import { MatListModule } from '@angular/material/list';
+import { ScheduleComponent } from './schedule/schedule.component'
+
 @NgModule({
   declarations: [
     AppComponent,
     TasksComponent,
     TaskDetailComponent,
     MessagesComponent,
+    ScheduleComponent,
 
   ],
-  imports: [
+  imports: [ 
+    MatListModule,
+    MatInputModule, 
+    MatIconModule,
+    MatSelectModule, 
+    NgFor, 
+    ReactiveFormsModule,
+    MatFormFieldModule,
     BrowserModule,
     FormsModule,
     AppRoutingModule,
     HttpClientModule, 
     HttpClientInMemoryWebApiModule.forRoot(
       InMemoryDataService, { dataEncapsulation: false}
-    ), BrowserAnimationsModule
+    ), 
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

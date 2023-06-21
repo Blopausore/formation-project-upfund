@@ -8,7 +8,6 @@
 </ul>
 
 
-<mat-form-field>
   <label for="new-task">Name: </label>
   <input id="new-task" #taskName placeholder="name"/>
 
@@ -16,19 +15,21 @@
   <input id="new-task" #taskDescription placeholder="description"/>
 
   <label for="new-task">Duration: </label>
-  <input id="new-task" #taskDurationMinutes placeholder="minutes" />
+  <input id="new-task" #taskDuration placeholder="minutes" type="number"/>
 
-  <label for="new-task">Prerequisite</label>
-  <select name="prerequisite" *ngFor="let pre_task of tasks" multiple="True" #taskPrerequisite>
-    <option value="pre_task.id">{{pre_task.name}}</option>
-</select>
+  
+  <mat-form-field>
+
+    <mat-label for="new-task">Prerequisite</mat-label>
+      <mat-select  multiple>
+        <mat-option *ngFor="let task of tasks" [value]="task">{{task.name}}</mat-option>
+      </mat-select>
+  </mat-form-field>
 
   <button type="button" class="add-button" (click)="
-    add(taskName.value, taskDescription.value, taskDurationMinutes.value, taskPrerequisite.value);
+    add(taskName.value, taskDescription.value, taskDuration.value, []);
     taskName.value='';
     taskDescription.value='';
-    taskDurationMinutes.value='';">
+    taskDuration.value='';">
   Add Task
   </button>
-</mat-form-field>
-

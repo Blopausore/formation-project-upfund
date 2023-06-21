@@ -12,7 +12,8 @@ import { catchError, map, tap } from 'rxjs';
 export class TaskService {
   constructor(
     private http: HttpClient,
-    private messageService: MessageService) { }
+    private messageService: MessageService,
+    ) { }
 
   private log(message: string){
     this.messageService.add(`TaskService: ${message}`);

@@ -3,6 +3,7 @@ import { Task } from '../task';
 import { ActivatedRoute } from '@angular/router';
 import { TaskService } from '../task.service';
 import { Location } from '@angular/common';
+import { MatSelectModule } from '@angular/material/select';
 
 
 @Component({

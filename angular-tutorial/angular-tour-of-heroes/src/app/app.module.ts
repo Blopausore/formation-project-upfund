@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 import { InMemoryDataService } from './in-memory-data.service';
 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,10 +24,13 @@ import { InMemoryDataService } from './in-memory-data.service';
     BrowserModule,
     FormsModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    HttpClientInMemoryWebApiModule.forRoot(
+      InMemoryDataService, { dataEncapsulation: false}
+    )
   ],
   providers: [
-    // no need to place any providers due to the `providedIn` flag...
+    // no need to place any providers due to the, `providedIn` flag...
   ],
   bootstrap: [ AppComponent ]
 })
