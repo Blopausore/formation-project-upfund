@@ -1,0 +1,34 @@
+<h2>Tasks</h2>
+<ul class="tasks">
+  <li *ngFor="let task of tasks">
+    <a routerLink="/detail/{{task.id}}">
+    <span class="badge">{{task.id}}</span> {{task.name}}
+    </a>
+  </li>
+</ul>
+
+
+<mat-form-field>
+  <label for="new-task">Name: </label>
+  <input id="new-task" #taskName placeholder="name"/>
+
+  <label for="new-task">Description: </label>
+  <input id="new-task" #taskDescription placeholder="description"/>
+
+  <label for="new-task">Duration: </label>
+  <input id="new-task" #taskDurationMinutes placeholder="minutes" />
+
+  <label for="new-task">Prerequisite</label>
+  <select name="prerequisite" *ngFor="let pre_task of tasks" multiple="True" #taskPrerequisite>
+    <option value="pre_task.id">{{pre_task.name}}</option>
+</select>
+
+  <button type="button" class="add-button" (click)="
+    add(taskName.value, taskDescription.value, taskDurationMinutes.value, taskPrerequisite.value);
+    taskName.value='';
+    taskDescription.value='';
+    taskDurationMinutes.value='';">
+  Add Task
+  </button>
+</mat-form-field>
+

@@ -5,7 +5,7 @@ from rest_framework import generics
 
 from django.views import generic
 
-from .models import Task
+from .models import Task, Schedule
 
 class TaskView(generic.ListView):
     template_name="scheduling/index_task.html"

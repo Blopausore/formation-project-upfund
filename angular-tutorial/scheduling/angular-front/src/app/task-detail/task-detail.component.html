@@ -1,0 +1,29 @@
+<div *ngIf="task">
+    <h2>{{task.name}} Details</h2>
+    <div>id: {{task.id}}</div>
+    <div>
+        <label for="task-name">Name </label>
+        <input id="task-name" [(ngModel)]="task.name" placeholder="name">
+    </div>
+    <div>
+        <label for="task-description">Description </label>
+        <input id="task-description" [(ngModel)]="task.description" placeholder="description">
+    </div>
+    <div>
+        <label for="task-duration">Duration </label>
+        <!--<input id="task-duration" [(ngModel)]="task.duration.days" placeholder="days"> -->
+        <!--<input id="task-duration" [(ngModel)]="task.duration.hours" placeholder="hours"> -->
+        <input id="task-duration" [(ngModel)]="task.duration.minutes" placeholder="minutes">
+    </div>
+    <div>
+        <label for="task-prerequisite">Prerequisite </label>
+        <select name="prerequisite" *ngFor="let pre_task of task.prerequisite" multiple="True">
+            <option value="pre_task.id">{{pre_task.name}}</option>
+        </select>
+         
+    </div>
+   
+</div>
+
+<button type="button" (click)="save()">save</button>
+<button type="button" (click)="goBack()">go back</button>
