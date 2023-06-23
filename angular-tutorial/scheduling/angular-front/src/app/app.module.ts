@@ -18,7 +18,10 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input'
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list';
-import { ScheduleComponent } from './schedule/schedule.component'
+import { ScheduleComponent } from './schedule/schedule.component';
+import { DashboardComponent } from './dashboard/dashboard.component'
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -27,6 +30,7 @@ import { ScheduleComponent } from './schedule/schedule.component'
     TaskDetailComponent,
     MessagesComponent,
     ScheduleComponent,
+    DashboardComponent,
 
   ],
   imports: [ 
@@ -34,6 +38,7 @@ import { ScheduleComponent } from './schedule/schedule.component'
     MatInputModule, 
     MatIconModule,
     MatSelectModule, 
+    MatButtonModule,
     NgFor, 
     ReactiveFormsModule,
     MatFormFieldModule,

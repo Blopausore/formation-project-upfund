@@ -1,4 +1,5 @@
 <h2>Tasks</h2>
+
 <ul class="tasks">
   <li *ngFor="let task of tasks">
     <a routerLink="/detail/{{task.id}}">
@@ -7,27 +8,30 @@
   </li>
 </ul>
 
+<form class="input-task">
+  <div class="input-task-field">
+    <label>name</label>
+    <input matInput #taskName >
+  </div>
 
-  <label for="new-task">Name: </label>
-  <input id="new-task" #taskName placeholder="name"/>
+  <div class="input-task-field">
+    <label>description</label>
+    <input matInput #taskDescription >
+  </div>
 
-  <label for="new-task">Description: </label>
-  <input id="new-task" #taskDescription placeholder="description"/>
-
-  <label for="new-task">Duration: </label>
-  <input id="new-task" #taskDuration placeholder="minutes" type="number"/>
-
+  <div class="input-task-field">
+    <label>duration</label>
+    <input type="number" matInput #taskDuration >
+  </div>
   
-  <mat-form-field>
+  <label for="new-task">Prerequisite</label>
+    <select multiple [value]="selectedPrerequisite" >
+      <option *ngFor="let task of tasks" [value]="task" >{{task.name}}</option>
+    </select>
 
-    <mat-label for="new-task">Prerequisite</mat-label>
-      <mat-select  multiple>
-        <mat-option *ngFor="let task of tasks" [value]="task">{{task.name}}</mat-option>
-      </mat-select>
-  </mat-form-field>
-
+</form>
   <button type="button" class="add-button" (click)="
-    add(taskName.value, taskDescription.value, taskDuration.value, []);
+    add(taskName.value, taskDescription.value, taskDuration.value);
     taskName.value='';
     taskDescription.value='';
     taskDuration.value='';">

@@ -53,11 +53,14 @@ export class TaskService {
   }
 
   addTask(task: Task): Observable<Task> {
+    console.log(task.prerequisite);
     return this.http.post<Task>(this.tasksUrl, task, this.httpOptions).pipe(
       tap((newTask: Task) => this.log(`added task w\ id=${newTask.id}`)),
       catchError(this.handleError<Task>('addTask'))
     );
   }
+
+
   deleteTask(id: number): Observable<Task> {
     const url = `${this.tasksUrl}/${id}`;
 
